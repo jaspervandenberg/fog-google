@@ -102,8 +102,6 @@ module Fog
             FILE_INSERTABLE_FIELDS.map { |k| [k, attributes[k]] }
                                   .reject { |pair| pair[1].nil? }
           ]
-          
-          options[:predefined_acl] ||= @predefined_acl
 
           service.put_object(directory.key, key, body, options)
           self.content_length = Fog::Storage.get_body_size(body)
